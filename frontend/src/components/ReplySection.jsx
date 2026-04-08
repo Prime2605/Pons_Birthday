@@ -1,40 +1,46 @@
 import { useState, useEffect } from 'react'
 import styles from './ReplySection.module.css'
 
+const STORAGE_KEY = 'pons_replies'
+
+function loadReplies() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
+  } catch {
+    return []
+  }
+}
+
+function saveReply(entry) {
+  const replies = loadReplies()
+  replies.push(entry)
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(replies))
+  return entry
+}
+
 export default function ReplySection() {
   const [text, setText] = useState('')
   const [replies, setReplies] = useState([])
   const [toast, setToast] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    fetch('/api/replies')
-      .then(r => r.json())
-      .then(setReplies)
-      .catch(() => {})
+    setReplies(loadReplies())
   }, [])
 
-  const save = async () => {
+  const save = () => {
     if (!text.trim()) return
-    setLoading(true)
-    try {
-      const res = await fetch('/api/replies', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text }),
-      })
-      if (res.ok) {
-        const entry = await res.json()
-        setReplies(prev => [...prev, entry])
-        setText('')
-        setToast(true)
-        setTimeout(() => setToast(false), 3000)
-      }
-    } catch {
-      alert('Could not save — make sure the backend is running!')
-    } finally {
-      setLoading(false)
+    const entry = {
+      text: text.trim(),
+      date: new Date().toLocaleString('en-IN', {
+        year: 'numeric', month: 'long', day: 'numeric',
+        hour: '2-digit', minute: '2-digit',
+      }),
     }
+    saveReply(entry)
+    setReplies(prev => [...prev, entry])
+    setText('')
+    setToast(true)
+    setTimeout(() => setToast(false), 3000)
   }
 
   return (
@@ -54,8 +60,8 @@ export default function ReplySection() {
             placeholder="Dear Prime... (type your heart here 💕)"
             rows={7}
           />
-          <button className={styles.btn} onClick={save} disabled={loading}>
-            {loading ? 'Saving...' : '💌 Save My Reply'}
+          <button className={styles.btn} onClick={save}>
+            💌 Save My Reply
           </button>
 
           {replies.length > 0 && (

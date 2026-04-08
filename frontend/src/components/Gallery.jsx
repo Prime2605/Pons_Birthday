@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { galleryData } from '../data'
 import styles from './Gallery.module.css'
 
-// Build proxy URL through Flask backend
-const photoUrl = (id) => `/api/photo/${id}`
+// Direct Google Drive thumbnail — no backend needed
+const photoUrl = (id) => `https://lh3.googleusercontent.com/d/${id}`
 const previewUrl = (id) => `https://drive.google.com/file/d/${id}/preview`
 
 function GalleryItem({ item, onOpen }) {
