@@ -4,5 +4,8 @@ frontend/dist/
 __pycache__/
 *.pyc
 .env
-backend/replies.json
+backend/
+api/
+requirements.txt
+package.json
 .DS_Store
