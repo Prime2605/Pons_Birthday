@@ -1,0 +1,272 @@
+/* ── Background ── */
+.bg {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(255,214,236,.16) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(255,179,217,.10) 0%, transparent 50%),
+    linear-gradient(180deg, var(--dark2) 0%, var(--dark3) 50%, var(--dark2) 100%);
+}
+
+/* ── Scene container ── */
+.scene {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  margin-bottom: 28px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ── Spark particles ── */
+@keyframes sparkFly {
+  0%   { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(calc(cos(var(--angle)) * 80px), calc(sin(var(--angle)) * -90px)) scale(0); opacity: 0; }
+}
+.spark {
+  position: absolute;
+  top: 0;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10;
+  animation: sparkFly var(--speed, .8s) ease-out forwards;
+}
+
+/* ── Candle row ── */
+.candleRow {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: -2px;
+  position: relative;
+  z-index: 3;
+  flex-wrap: wrap;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.candleWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Flame */
+.flame {
+  position: relative;
+  width: 10px;
+  height: 18px;
+  margin-bottom: 1px;
+}
+.flameOuter {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 10px; height: 18px;
+  background: radial-gradient(ellipse at 50% 80%, #FFB84D, #FF6B00);
+  border-radius: 50% 50% 30% 30%;
+  animation: flicker 0.6s ease-in-out infinite alternate;
+}
+.flameInner {
+  position: absolute;
+  bottom: 1px; left: 50%;
+  transform: translateX(-50%);
+  width: 5px; height: 10px;
+  background: radial-gradient(ellipse at 50% 80%, #FFF5A0, #FFD000);
+  border-radius: 50% 50% 30% 30%;
+  animation: flicker 0.45s ease-in-out infinite alternate-reverse;
+}
+.flameGlow {
+  position: absolute;
+  bottom: -4px; left: 50%;
+  transform: translateX(-50%);
+  width: 18px; height: 18px;
+  background: radial-gradient(circle, rgba(255,184,77,.6), transparent);
+  border-radius: 50%;
+  animation: flicker 0.7s ease-in-out infinite alternate;
+}
+.flameOn  { opacity: 1; }
+.flameOff { opacity: 0; transition: opacity .2s; }
+
+/* Smoke after blow */
+@keyframes smokeRise {
+  0%   { transform: translateY(0) scaleX(1); opacity: 0.7; }
+  100% { transform: translateY(-22px) scaleX(2.5); opacity: 0; }
+}
+.smoke {
+  position: absolute;
+  top: -8px; left: 50%;
+  transform: translateX(-50%);
+  width: 6px; height: 10px;
+  background: rgba(200,200,220,.6);
+  border-radius: 50%;
+  animation: smokeRise 1.2s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Candle body */
+.candle {
+  width: 10px;
+  height: 28px;
+  border-radius: 3px 3px 2px 2px;
+  box-shadow: inset -2px 0 4px rgba(0,0,0,.15);
+}
+
+/* ── Flame flicker ── */
+@keyframes flicker {
+  0%  { transform: translateX(-50%) scaleX(1)   scaleY(1); }
+  100%{ transform: translateX(-50%) scaleX(0.88) scaleY(1.08); }
+}
+
+/* ── Cake ── */
+.cake {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tier 1 – top */
+.tier1 {
+  width: 300px;
+  height: 80px;
+  background: linear-gradient(180deg, #FFD6EC 0%, #F4B8D8 100%);
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(244,184,216,.4), inset 0 -4px 8px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.frosting1 {
+  position: absolute;
+  top: -10px; left: 0; right: 0;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(244,184,216,.3);
+}
+.frosting1::before {
+  content: '';
+  position: absolute;
+  top: 4px; left: 10%; right: 10%;
+  height: 10px;
+  background: rgba(255,214,236,.8);
+  border-radius: 50%;
+}
+.decoration {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  padding-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+/* Tier 2 – bottom */
+.tier2 {
+  width: 380px;
+  height: 100px;
+  background: linear-gradient(180deg, #FFB3D9 0%, #EC93C0 100%);
+  border-radius: 0 0 16px 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(236,147,192,.4), inset 0 -4px 8px rgba(0,0,0,.1);
+}
+.frosting2 {
+  position: absolute;
+  top: -10px; left: 0; right: 0;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+}
+.frosting2::before {
+  content: '';
+  position: absolute;
+  top: 4px; left: 8%; right: 8%;
+  height: 10px;
+  background: rgba(255,179,217,.8);
+  border-radius: 50%;
+}
+.writing {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.35rem;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(155,27,48,.4);
+  position: relative;
+  z-index: 1;
+  padding-top: 8px;
+}
+
+/* Plate */
+.plate {
+  width: 420px;
+  height: 14px;
+  background: linear-gradient(180deg, #E8C8D8, #D4A8C0);
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(194,86,138,.25);
+}
+
+/* ── Status area ── */
+.statusArea { min-height: 80px; margin: 12px 0; }
+.hint       { font-size:1rem; color:var(--pink-300); opacity:.85; }
+@keyframes blowPulse {
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.08); }
+}
+.blowText   {
+  font-size:1.1rem; color:var(--pink-200);
+  animation: blowPulse .5s ease-in-out infinite;
+}
+
+/* ── Wish message ── */
+@keyframes wishAppear {
+  from { opacity:0; transform:scale(.8) translateY(20px); }
+  to   { opacity:1; transform:scale(1) translateY(0); }
+}
+.wishMsg {
+  animation: wishAppear .6s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+.wishTitle { font-size:clamp(2rem,6vw,3.5rem); color:var(--pink-300); display:block; margin-bottom:12px; animation:pinkTextGlow 2.5s ease-in-out infinite; }
+.wishLine  { font-size:1.05rem; color:var(--pink-200); line-height:1.9; }
+
+/* ── Buttons ── */
+.btnRow { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+.blowBtn {
+  padding: 16px 44px;
+  background: linear-gradient(135deg, var(--rose), var(--pink-700));
+  color: #fff; border: none; border-radius: 50px;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.1rem; cursor: pointer;
+  transition: all .3s;
+  box-shadow: 0 10px 32px rgba(194,86,138,.4);
+  animation: blowPulse 2s ease-in-out infinite;
+}
+.blowBtn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 16px 44px rgba(194,86,138,.6);
+}
+.blowBtn:disabled { opacity:.65; cursor:not-allowed; animation:none; }
+
+.relightBtn {
+  padding: 14px 38px;
+  background: rgba(255,214,236,.12);
+  color: var(--pink-300); border: 1px solid rgba(244,184,216,.4);
+  border-radius: 50px;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size:1rem; cursor:pointer;
+  transition: all .3s;
+}
+.relightBtn:hover { background:rgba(255,214,236,.2); transform:translateY(-2px); }
+
+@media(max-width:480px) {
+  .tier1 { width:240px; }
+  .tier2 { width:300px; }
+  .plate { width:330px; }
+  .candleRow { max-width:300px; }
+}

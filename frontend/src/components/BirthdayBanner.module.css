@@ -1,0 +1,29 @@
+.wrap {
+  position:relative; min-height:65vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; padding:80px 24px;
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(255,214,236,.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 70%, rgba(194,86,138,.18) 0%, transparent 55%),
+    linear-gradient(180deg, var(--dark2) 0%, var(--dark3) 50%, var(--dark2) 100%);
+  z-index:2; overflow:hidden;
+}
+/* top shimmer strip */
+.wrap::after {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg,transparent,var(--pink-400),var(--gold),var(--pink-400),transparent);
+}
+.confetti { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.main  {
+  font-size:clamp(3.2rem,10vw,7rem); line-height:1.05;
+  color:var(--pink-300);
+  animation:pinkTextGlow 2.5s ease-in-out infinite;
+}
+.name  {
+  font-size:clamp(1.8rem,5vw,3.2rem); color:#fff; margin:12px 0;
+}
+.from  { font-size:clamp(1.3rem,4vw,2.2rem); margin-top:14px; color:var(--pink-400); }
+.badge { margin-top:28px; }
+.song  { margin-top:26px; font-size:.95rem; color:var(--pink-300); opacity:.9; }

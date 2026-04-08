@@ -1,0 +1,58 @@
+.bg {
+  background:
+    radial-gradient(ellipse at 40% 40%, rgba(255,214,236,.10) 0%, transparent 55%),
+    linear-gradient(180deg, var(--dark) 0%, var(--dark2) 100%);
+}
+.card { max-width:580px; margin:0 auto; padding:46px; }
+.intro { margin-bottom:26px; font-size:1rem; line-height:1.9; color:var(--pink-300); }
+
+.ta {
+  width:100%; resize:vertical;
+  background: rgba(255,214,236,.06);
+  border:1px solid rgba(244,184,216,.35);
+  border-radius:12px; color:var(--cream);
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:1rem; padding:18px; outline:none;
+  transition:border-color .3s, box-shadow .3s; line-height:1.85;
+}
+.ta:focus {
+  border-color:var(--pink-400);
+  box-shadow:0 0 20px rgba(244,184,216,.22), 0 0 0 1px rgba(244,184,216,.2);
+}
+.ta::placeholder { color:rgba(244,184,216,.40); }
+
+.btn {
+  display:inline-flex; align-items:center; gap:10px;
+  margin-top:18px; padding:14px 38px;
+  background: linear-gradient(135deg, var(--rose), var(--pink-700));
+  color:#fff; border:none; border-radius:50px;
+  font-family:'Playfair Display',serif; font-size:1rem; cursor:pointer;
+  transition:all .3s; box-shadow:0 10px 30px rgba(194,86,138,.35);
+}
+.btn:hover:not(:disabled) {
+  transform:translateY(-3px);
+  box-shadow:0 16px 42px rgba(194,86,138,.55);
+}
+.btn:disabled { opacity:.6; cursor:not-allowed; }
+
+.saved       { margin-top:38px; text-align:left; }
+.savedTitle  { font-size:1.6rem; margin-bottom:18px; display:block; color:var(--pink-300); }
+.entry {
+  background: rgba(255,214,236,.07);
+  border-left:3px solid var(--pink-500);
+  border-radius:0 12px 12px 0; padding:18px 22px; margin-bottom:14px;
+  box-shadow:0 2px 12px rgba(244,184,216,.06);
+}
+.entryDate { font-size:.72rem; letter-spacing:1px; margin-bottom:6px; color:var(--pink-400); }
+.entryText { line-height:1.75; font-size:.98rem; color:var(--cream); }
+
+.toast {
+  position:fixed; bottom:30px; left:50%; transform:translateX(-50%);
+  background:linear-gradient(135deg, var(--rose), var(--pink-700));
+  color:#fff; padding:14px 30px; border-radius:50px;
+  font-family:'Playfair Display',serif; font-style:italic; font-size:1rem;
+  z-index:9999; box-shadow:0 10px 32px rgba(194,86,138,.5);
+  animation:fadeInUp .4s ease forwards;
+}
+
+@media(max-width:600px){ .card{ padding:28px 18px; } }

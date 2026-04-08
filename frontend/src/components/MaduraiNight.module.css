@@ -1,0 +1,24 @@
+.bg {
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(255,179,217,.12) 0%, transparent 60%),
+    linear-gradient(180deg, var(--dark2) 0%, var(--dark) 50%, var(--dark2) 100%);
+}
+.card::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at center,rgba(255,214,236,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.stars { letter-spacing:10px; font-size:.85rem; color:var(--pink-400); }
+.poem  { font-size:clamp(.93rem,2.5vw,1.1rem); line-height:2.3; position:relative; z-index:1; }
+.line  { display:block; color:var(--pink-100); }
+.pink  { color:var(--pink-400); }
+.pinkItalic { color:var(--pink-300); font-size:1.12em; }
+.goldBig    { color:var(--gold-lt); font-size:1.2em; }
+.small      { font-size:.85em; color:rgba(244,184,216,.55); }
+
+/* card override */
+:global .card-glass.kiss-card {
+  max-width:680px; margin:0 auto;
+  background:linear-gradient(135deg,rgba(255,214,236,.07),rgba(194,86,138,.05));
+  border-color:rgba(244,184,216,.28);
+}

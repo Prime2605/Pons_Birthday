@@ -1,0 +1,38 @@
+.bg {
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(255,214,236,.10) 0%, transparent 55%),
+    linear-gradient(180deg, var(--dark2) 0%, #1E0B18 100%);
+}
+.paper {
+  background: linear-gradient(135deg, #FFF9F5 0%, #FFF0ED 100%);
+  color: var(--dark3); border-radius:6px; padding:52px;
+  position:relative; max-width:720px; margin:0 auto;
+  box-shadow:
+    0 30px 80px rgba(194,86,138,.25),
+    0 0 0 1px rgba(244,184,216,.4),
+    0 0 60px rgba(244,184,216,.10),
+    inset 0 0 60px rgba(212,160,23,.03);
+}
+/* Pink inner border */
+.paper::before {
+  content:'';
+  position:absolute; inset:12px;
+  border:1px solid rgba(194,86,138,.15);
+  border-radius:3px; pointer-events:none;
+}
+.corner {
+  position:absolute; color:rgba(155,27,48,.25); font-size:1.5rem;
+}
+.tl{top:16px;left:18px} .tr{top:16px;right:18px}
+.bl{bottom:16px;left:18px} .br{bottom:16px;right:18px}
+
+.dateRow    { text-align:right; font-size:.82rem; color:#A03050; font-family:'Lato',sans-serif; letter-spacing:1px; margin-bottom:22px; }
+.salutation { font-size:2.5rem; color:#9B1B30; margin-bottom:18px; }
+.roses      { text-align:center; font-size:1.7rem; letter-spacing:14px; margin-bottom:22px; }
+.body       { font-family:'Playfair Display',serif; font-style:italic; font-size:1rem; line-height:2.05; color:#2D1020; }
+.body p     { margin-bottom:18px; }
+.ending     { text-align:right; margin-top:36px; }
+.farewellLine { font-family:'Playfair Display',serif; font-style:italic; color:#5C2040; margin-bottom:6px; font-size:.95rem; }
+.sign       { font-size:2.5rem; color:#9B1B30; }
+
+@media(max-width:600px){ .paper{ padding:28px 18px; } }

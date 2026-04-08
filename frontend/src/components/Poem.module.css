@@ -1,0 +1,29 @@
+.bg {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(255,214,236,.12) 0%, transparent 65%),
+    radial-gradient(ellipse at 20% 80%, rgba(255,179,217,.08) 0%, transparent 50%),
+    linear-gradient(180deg, var(--dark3) 0%, var(--dark2) 100%);
+}
+.card {
+  max-width:600px; margin:0 auto;
+  background: linear-gradient(135deg, rgba(255,214,236,.09), rgba(244,184,216,.05));
+  border:1px solid rgba(244,184,216,.28);
+  border-radius:22px; padding:50px 42px;
+  box-shadow:0 8px 40px rgba(244,184,216,.10), inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.poem span    { display:block; font-size:clamp(.93rem,2.3vw,1.08rem); line-height:2.1; color:var(--pink-100); }
+.poem br      { display:block; margin-bottom:14px; content:''; }
+.poem :global(.gold) { color:var(--gold-lt); }
+
+.dividerLine  {
+  width:100%; height:1px;
+  background:linear-gradient(90deg,transparent,var(--pink-500),transparent);
+  margin:30px 0;
+}
+
+.tamil        { font-family:'Lato',sans-serif; font-weight:300; font-size:clamp(.9rem,2.3vw,1.05rem); line-height:2.1; color:var(--pink-300); }
+.tamil span   { display:block; }
+.tamil br     { display:block; margin-bottom:14px; content:''; }
+
+@media(max-width:600px){ .card{ padding:32px 20px; } }

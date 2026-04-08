@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "api/**/*.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    { "src": "/api/photo/(.*)", "dest": "/api/photo/[file_id].py" },
+    { "src": "/api/replies",    "dest": "/api/replies.py" },
+    { "src": "/(.*)",           "dest": "/frontend/dist/$1" }
+  ]
+}

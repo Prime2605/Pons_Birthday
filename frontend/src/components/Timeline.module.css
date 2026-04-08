@@ -1,0 +1,35 @@
+.bg {
+  background:
+    radial-gradient(ellipse at 20% 40%, rgba(255,179,217,.10) 0%, transparent 55%),
+    linear-gradient(180deg, var(--dark2) 0%, var(--dark) 50%, var(--dark2) 100%);
+}
+.timeline { position:relative; padding-left:28px; }
+.timeline::before {
+  content:''; position:absolute; left:0; top:0; bottom:0; width:2px;
+  background:linear-gradient(180deg,
+    transparent,
+    var(--pink-400) 20%,
+    var(--pink-600) 50%,
+    var(--pink-400) 80%,
+    transparent
+  );
+}
+.item {
+  position:relative; padding:0 0 46px 42px;
+  opacity:0; transform:translateX(-30px); transition:all .7s ease;
+}
+.vis { opacity:1; transform:translateX(0); }
+.dot {
+  position:absolute; left:-8px; top:10px;
+  width:16px; height:16px; border-radius:50%;
+  background: radial-gradient(circle, var(--pink-300), var(--pink-600));
+  border:3px solid var(--dark);
+  box-shadow:0 0 14px var(--pink-glow2), 0 0 4px rgba(255,255,255,.3);
+}
+.emoji { font-size:1.8rem; margin-bottom:8px; }
+.date  {
+  font-size:.72rem; letter-spacing:2px; text-transform:uppercase;
+  color:var(--pink-500); margin-bottom:6px;
+}
+.title { font-size:1.3rem; color:var(--pink-200); margin-bottom:8px; }
+.desc  { font-size:.95rem; color:rgba(255,214,236,.70); line-height:1.8; }
